@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ThreadLens</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="icons/icon48.png" alt="" class="brand-mark" />
+      <span class="brand-name">ThreadLens</span>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="btn-new" title="New analysis" hidden>
+        <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <button class="icon-btn" id="btn-settings" title="Settings">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============ INPUT ============ -->
+  <main id="view-input" class="view">
+    <div class="hero">
+      <h1>Turn long email threads into clear next steps.</h1>
+      <p>Summary, owners, deadlines — every point checked against the original emails.</p>
+    </div>
+
+    <div class="banner warn" id="key-banner" hidden>
+      <svg viewBox="0 0 24 24"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>
+      <span>Add your Gemini API key in <a href="#" id="open-settings-link">Settings</a> or in <code>.env</code>.</span>
+    </div>
+
+    <button class="btn primary block" id="btn-grab">
+      <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+      Grab thread from this tab
+    </button>
+    <p class="hint" id="grab-hint">Works best on an open Gmail thread. Elsewhere, select the text first.</p>
+
+    <div class="divider"><span>or paste it</span></div>
+
+    <div class="field">
+      <textarea id="thread-input" rows="9" placeholder="Paste a full email thread here (From: / Date: / Subject: headers help ThreadLens cite each email)…"></textarea>
+      <div class="field-meta"><span id="input-meta">0 characters</span><button class="link" id="btn-clear" hidden>Clear</button></div>
+    </div>
+
+    <div class="samples">
+      <span class="samples-label">Try a sample</span>
+      <div class="chips" id="sample-chips"></div>
+    </div>
+
+    <div class="privacy-card">
+      <div class="privacy-head">
+        <svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+        Privacy — masked on your device before anything is sent
+      </div>
+      <label class="switch-row"><span>Mask emails, phones, IDs &amp; secrets</span><input type="checkbox" id="opt-redact" /><i></i></label>
+      <label class="switch-row"><span>Pseudonymise participant names</span><input type="checkbox" id="opt-names" /><i></i></label>
+    </div>
+
+    <button class="btn primary block lg" id="btn-analyse" disabled>
+      <svg viewBox="0 0 24 24"><path d="M12 3l1.9 5.8L20 10l-6.1 1.2L12 17l-1.9-5.8L4 10l6.1-1.2z"/></svg>
+      Analyse thread
+    </button>
+  </main>
+
+  <!-- ============ PROGRESS ============ -->
+  <main id="view-progress" class="view" hidden>
+    <div class="progress-card">
+      <h2>Analysing…</h2>
+      <ol class="steps" id="steps"></ol>
+      <button class="btn ghost" id="btn-cancel">Cancel</button>
+    </div>
+  </main>
+
+  <!-- ============ RESULTS ============ -->
+  <main id="view-results" class="view" hidden>
+    <section class="result-head">
+      <div class="result-title">
+        <h2 id="r-subject"></h2>
+        <div class="meta" id="r-meta"></div>
+      </div>
+      <div class="score" id="r-score" title="Faithfulness: share of claims verified against the source emails"></div>
+    </section>
+
+    <nav class="tabs" role="tablist">
+      <button role="tab" data-tab="overview" class="active">Overview</button>
+      <button role="tab" data-tab="actions">Actions <span class="count" id="c-actions"></span></button>
+      <button role="tab" data-tab="chat">Ask</button>
+      <button role="tab" data-tab="sources">Emails <span class="count" id="c-sources"></span></button>
+    </nav>
+
+    <section class="tab-panel" data-panel="overview">
+      <div class="tldr" id="r-tldr"></div>
+      <h3>Summary</h3>
+      <ul class="points" id="r-summary"></ul>
+      <div id="r-decisions-wrap"><h3>Decisions</h3><ul class="points" id="r-decisions"></ul></div>
+      <div id="r-questions-wrap"><h3>Open questions</h3><ul class="points" id="r-questions"></ul></div>
+      <details class="how">
+        <summary>How was this checked?</summary>
+        <div id="r-how"></div>
+      </details>
+    </section>
+
+    <section class="tab-panel" data-panel="actions" hidden>
+      <div class="filters" id="action-filters">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="open">Open</button>
+        <button class="chip" data-filter="done">Done</button>
+        <button class="chip" data-filter="review">Needs review</button>
+      </div>
+      <div id="r-actions" class="actions"></div>
+    </section>
+
+    <section class="tab-panel chat-panel" data-panel="chat" hidden>
+      <div class="chat-log" id="chat-log">
+        <div class="chat-empty" id="chat-empty">
+          <p>Ask anything about this thread. Answers cite the emails they come from.</p>
+          <div class="chips" id="chat-suggestions"></div>
+        </div>
+      </div>
+      <form class="chat-input" id="chat-form">
+        <textarea id="chat-text" rows="1" placeholder="Ask a follow-up…"></textarea>
+        <button class="icon-btn send" type="submit" title="Send">
+          <svg viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></svg>
+        </button>
+      </form>
+    </section>
+
+    <section class="tab-panel" data-panel="sources" hidden>
+      <div id="r-sources" class="sources"></div>
+    </section>
+
+    <footer class="export-bar">
+      <button class="btn ghost sm" id="exp-md"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy</button>
+      <button class="btn ghost sm" id="exp-csv"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>CSV</button>
+      <button class="btn ghost sm" id="exp-json"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>JSON</button>
+    </footer>
+  </main>
+
+  <!-- ============ SOURCE DRAWER ============ -->
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="drawer" id="drawer" hidden aria-label="Source email">
+    <div class="drawer-head">
+      <div><div class="drawer-id" id="d-id"></div><div class="drawer-from" id="d-from"></div><div class="drawer-date" id="d-date"></div></div>
+      <button class="icon-btn" id="d-close" title="Close"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+    </div>
+    <div class="drawer-body" id="d-body"></div>
+  </aside>
+
+  <!-- ============ SETTINGS ============ -->
+  <dialog id="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Settings</h2>
+      <label class="fld"><span>Gemini API key</span>
+        <div class="key-row"><input type="password" id="s-key" autocomplete="off" spellcheck="false" placeholder="AIza…" /><button type="button" class="link" id="s-key-toggle">Show</button></div>
+        <small id="s-key-note">Get one free at aistudio.google.com → API keys. Stored only in this browser.</small>
+      </label>
+      <label class="fld"><span>Model</span>
+        <input id="s-model" list="models" spellcheck="false" />
+        <datalist id="models">
+          <option value="gemini-3.8-flash"></option>
+          <option value="gemini-3.6-flash"></option>
+          <option value="gemini-3.5-flash-lite"></option>
+          <option value="gemini-3.1-pro-preview"></option>
+        </datalist>
+      </label>
+      <label class="switch-row"><span>Second-pass AI fact-check (recommended)</span><input type="checkbox" id="s-verify" /><i></i></label>
+      <div class="two">
+        <label class="fld"><span>Single-pass limit (tokens)</span><input type="number" id="s-single" min="500" step="100" /></label>
+        <label class="fld"><span>Chunk size (tokens)</span><input type="number" id="s-chunk" min="300" step="100" /></label>
+      </div>
+      <small>Threads above the single-pass limit are processed with map-reduce chunking. Defaults are low so the long sample demonstrates chunking; raise them (e.g. 8000 / 3000) for everyday use.</small>
+      <div class="dialog-actions">
+        <button type="button" class="link" id="s-reset">Reset to .env defaults</button>
+        <span class="spacer"></span>
+        <button type="button" class="btn ghost" id="s-cancel">Cancel</button>
+        <button type="submit" class="btn primary" id="s-save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" hidden></div>
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

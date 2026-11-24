@@ -1,0 +1,200 @@
+From: Priya Sharma <priya.sharma@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Wed, 18 Nov 2026 09:12
+Subject: Aurora v2.0 launch plan — Dec 5
+
+Hi team,
+
+We're locking the Aurora v2.0 launch for Friday, Dec 5. Here's what I need from each of you:
+
+- Rahul: finish the payments API migration by Nov 28.
+- Ananya: final onboarding screens by Nov 22.
+- David: draft the launch blog post and the email campaign by Dec 1.
+- Sara: full regression test plan by Nov 25.
+
+One open point: do we need legal sign-off on the updated Terms & Conditions?
+
+Thanks,
+Priya
+
+==========
+
+From: Rahul Mehta <rahul.mehta@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Wed, 18 Nov 2026 11:40
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Payments migration is on track, but I'm blocked on staging credentials from DevOps. Priya, could you chase them? I've asked twice.
+
+Also suggest we ship v2.0 behind a feature flag and roll out gradually: 10% on launch day, 50% after 48 hours, then 100%.
+
+Rahul
+
+On Wed, 18 Nov 2026 09:12, Priya Sharma <priya.sharma@aurora-apps.example> wrote:
+> Hi team,
+>
+> We're locking the Aurora v2.0 launch for Friday, Dec 5. Here's what I need from each of you:
+>
+> - Rahul: finish the payments API migration by Nov 28.
+> - Ananya: final onboarding screens by Nov 22.
+> - David: draft the launch blog post and the email campaign by Dec 1.
+> - Sara: full regression test plan by Nov 25.
+>
+> One open point: do we need legal sign-off on the updated Terms & Conditions?
+>
+> Thanks,
+> Priya
+
+==========
+
+From: Ananya Iyer <ananya.iyer@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Wed, 18 Nov 2026 14:05
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Onboarding screens will be ready Thursday. Quick question: is dark mode part of v2.0? It changes about 30% of the screens.
+
+Ananya
+
+On Wed, 18 Nov 2026 11:40, Rahul Mehta <rahul.mehta@aurora-apps.example> wrote:
+> Payments migration is on track, but I'm blocked on staging credentials from DevOps. Priya, could you chase them? I've asked twice.
+>
+> Also suggest we ship v2.0 behind a feature flag and roll out gradually: 10% on launch day, 50% after 48 hours, then 100%.
+>
+> Rahul
+
+==========
+
+From: Priya Sharma <priya.sharma@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Wed, 18 Nov 2026 16:30
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Decisions:
+1. Dark mode moves to v2.1 — not in this launch.
+2. Agreed on the feature-flag rollout (10% / 50% / 100%).
+
+Rahul, I'll chase DevOps for the staging credentials today.
+David, can you check with legal whether the T&C update needs sign-off?
+
+Priya
+
+On Wed, 18 Nov 2026 14:05, Ananya Iyer <ananya.iyer@aurora-apps.example> wrote:
+> Onboarding screens will be ready Thursday. Quick question: is dark mode part of v2.0? It changes about 30% of the screens.
+>
+> Ananya
+
+==========
+
+From: David Chen <david.chen@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Thu, 19 Nov 2026 10:02
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Sure, I'll check with legal and report back by Monday.
+Blog draft by Dec 1 works. Ananya, I'll need the final app screenshots from you by Nov 26 for the blog and the campaign.
+
+David
+
+On Wed, 18 Nov 2026 16:30, Priya Sharma <priya.sharma@aurora-apps.example> wrote:
+> Decisions:
+> 1. Dark mode moves to v2.1 — not in this launch.
+> 2. Agreed on the feature-flag rollout (10% / 50% / 100%).
+>
+> Rahul, I'll chase DevOps for the staging credentials today.
+> David, can you check with legal whether the T&C update needs sign-off?
+>
+> Priya
+
+==========
+
+From: Sara Khan <sara.khan@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Fri, 20 Nov 2026 18:20
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Regression test plan is shared in the QA drive (142 cases).
+Found a blocker: the app crashes on Android 12 during login when biometric auth is enabled. Rahul, can you take this? It must be fixed before the Nov 30 code freeze.
+Call me on +91 98765 43210 if you need a repro device.
+
+Sara
+
+On Thu, 19 Nov 2026 10:02, David Chen <david.chen@aurora-apps.example> wrote:
+> Sure, I'll check with legal and report back by Monday.
+> Blog draft by Dec 1 works. Ananya, I'll need the final app screenshots from you by Nov 26 for the blog and the campaign.
+>
+> David
+
+==========
+
+From: Rahul Mehta <rahul.mehta@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Sat, 21 Nov 2026 12:15
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Staging credentials received, thanks Priya.
+I'll fix the Android 12 login crash by Nov 27. Since that will take most of my week, Vikram Rao will take over the payments migration and finish it by Nov 28 — he's already up to speed.
+
+Rahul
+
+On Fri, 20 Nov 2026 18:20, Sara Khan <sara.khan@aurora-apps.example> wrote:
+> Regression test plan is shared in the QA drive (142 cases).
+> Found a blocker: the app crashes on Android 12 during login when biometric auth is enabled. Rahul, can you take this? It must be fixed before the Nov 30 code freeze.
+> Call me on +91 98765 43210 if you need a repro device.
+>
+> Sara
+
+==========
+
+From: Ananya Iyer <ananya.iyer@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Sun, 22 Nov 2026 19:45
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Onboarding screens are done and uploaded to Figma. David, I've also sent you the final screenshots.
+
+Ananya
+
+On Sat, 21 Nov 2026 12:15, Rahul Mehta <rahul.mehta@aurora-apps.example> wrote:
+> Staging credentials received, thanks Priya.
+> I'll fix the Android 12 login crash by Nov 27. Since that will take most of my week, Vikram Rao will take over the payments migration and finish it by Nov 28 — he's already up to speed.
+>
+> Rahul
+
+==========
+
+From: David Chen <david.chen@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Mon, 23 Nov 2026 15:10
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Legal confirmed no new sign-off is needed — the T&C changes are cosmetic.
+Blog draft is in progress.
+Open question: who is posting the release notes on the Play Store and App Store? It isn't on anyone's list.
+
+David
+
+On Sun, 22 Nov 2026 19:45, Ananya Iyer <ananya.iyer@aurora-apps.example> wrote:
+> Onboarding screens are done and uploaded to Figma. David, I've also sent you the final screenshots.
+>
+> Ananya
+
+==========
+
+From: Priya Sharma <priya.sharma@aurora-apps.example>
+To: Priya Sharma <priya.sharma@aurora-apps.example>, Rahul Mehta <rahul.mehta@aurora-apps.example>, Ananya Iyer <ananya.iyer@aurora-apps.example>, David Chen <david.chen@aurora-apps.example>, Sara Khan <sara.khan@aurora-apps.example>
+Date: Tue, 24 Nov 2026 09:30
+Subject: Re: Aurora v2.0 launch plan — Dec 5
+
+Thanks everyone, great progress.
+Code freeze on Nov 30 is confirmed. Go/no-go meeting is on Dec 3 at 4pm — I'll send the invite today.
+Also, someone needs to update the support FAQ before launch.
+
+Priya
+
+On Mon, 23 Nov 2026 15:10, David Chen <david.chen@aurora-apps.example> wrote:
+> Legal confirmed no new sign-off is needed — the T&C changes are cosmetic.
+> Blog draft is in progress.
+> Open question: who is posting the release notes on the Play Store and App Store? It isn't on anyone's list.
+>
+> David

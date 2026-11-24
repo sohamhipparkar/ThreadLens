@@ -1,0 +1,589 @@
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Monday, November 2, 2026 8:05 AM
+To: Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: P1: NimbusStore replication failures — escalation
+
+Lisa,
+
+Our migration of 40 TB to NimbusStore has been stalled since Saturday. Replication is failing on three buckets and customers are reporting stale dashboards. This is now a P1 for us. Please escalate on your side and share a root-cause analysis as soon as you have one.
+
+Arjun, please collect the replication logs from the weekend and share them with Lisa's team.
+
+Meera Nair
+Head of IT Operations
+
+________________________________
+
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Monday, November 2, 2026 9:20 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Hi Meera,
+
+Sorry for the disruption. I've opened P1 ticket NS-48213 and pulled in Tom Becker from our support engineering team. He'll be your technical point of contact until this is resolved. I'll stay on the thread for commercial and escalation matters.
+
+Best,
+Lisa Wong
+Account Manager, NimbusStore
+
+-----Original Message-----
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Monday, November 2, 2026 8:05 AM
+Subject: P1: NimbusStore replication failures — escalation
+
+Lisa,
+
+Our migration of 40 TB to NimbusStore has been stalled since Saturday. Replication is failing on three buckets and customers are reporting stale dashboards. This is now a P1 for us. Please escalate on your side and share a root-cause analysis as soon as you have one.
+
+Arjun, please collect the replication logs from the weekend and share them with Lisa's team.
+
+Meera Nair
+Head of IT Operations
+
+________________________________
+
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Monday, November 2, 2026 10:45 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Tom, Lisa,
+
+Logs are uploaded to the shared folder on ticket NS-48213. Summary: every failure is a 503 throttling error from the eu-west endpoint, starting at 02:14 UTC on Saturday, Oct 31. Affected buckets are analytics-raw, billing-archive and media-assets. Other buckets replicated fine.
+
+Arjun
+
+-----Original Message-----
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Monday, November 2, 2026 9:20 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Hi Meera,
+
+Sorry for the disruption. I've opened P1 ticket NS-48213 and pulled in Tom Becker from our support engineering team. He'll be your technical point of contact until this is resolved. I'll stay on the thread for commercial and escalation matters.
+
+Best,
+Lisa Wong
+Account Manager, NimbusStore
+
+________________________________
+
+From: Tom Becker <tom.becker@nimbusstore.example>
+Sent: Monday, November 2, 2026 12:30 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Thanks Arjun, that was useful.
+
+Preliminary root cause: a new rate-limit policy was pushed to eu-west on Friday night and it is far too aggressive for bulk replication. We are rolling it back now, ETA about 6 hours.
+
+Arjun, please pause your retry jobs until I confirm the rollback, otherwise the backlog will trigger the throttle again.
+
+Tom Becker
+Support Engineering, NimbusStore
+
+-----Original Message-----
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Monday, November 2, 2026 10:45 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Tom, Lisa,
+
+Logs are uploaded to the shared folder on ticket NS-48213. Summary: every failure is a 503 throttling error from the eu-west endpoint, starting at 02:14 UTC on Saturday, Oct 31. Affected buckets are analytics-raw, billing-archive and media-assets. Other buckets replicated fine.
+
+Arjun
+
+________________________________
+
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Monday, November 2, 2026 12:52 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Retry jobs are paused on all three buckets. Will resume when you give the go-ahead.
+
+Arjun
+
+-----Original Message-----
+From: Tom Becker <tom.becker@nimbusstore.example>
+Sent: Monday, November 2, 2026 12:30 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Thanks Arjun, that was useful.
+
+Preliminary root cause: a new rate-limit policy was pushed to eu-west on Friday night and it is far too aggressive for bulk replication. We are rolling it back now, ETA about 6 hours.
+
+Arjun, please pause your retry jobs until I confirm the rollback, otherwise the backlog will trigger the throttle again.
+
+Tom Becker
+Support Engineering, NimbusStore
+
+________________________________
+
+From: Neha Gupta <neha.gupta@corvid-analytics.example>
+Sent: Monday, November 2, 2026 1:15 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Meera,
+
+Two enterprise customers, Halcyon Retail and Brightpath Health, have escalated about stale dashboards. They need a written update from us by end of day today. Who should send it?
+
+Neha Gupta
+Customer Success
+
+-----Original Message-----
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Monday, November 2, 2026 12:52 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Retry jobs are paused on all three buckets. Will resume when you give the go-ahead.
+
+Arjun
+
+________________________________
+
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Monday, November 2, 2026 1:40 PM
+To: Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Neha, please draft the customer update and send it to me for review. It needs to go out by 6 pm today. Keep it factual: vendor-side throttling, fix in progress, no data loss confirmed so far.
+
+Meera
+
+-----Original Message-----
+From: Neha Gupta <neha.gupta@corvid-analytics.example>
+Sent: Monday, November 2, 2026 1:15 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Meera,
+
+Two enterprise customers, Halcyon Retail and Brightpath Health, have escalated about stale dashboards. They need a written update from us by end of day today. Who should send it?
+
+Neha Gupta
+Customer Success
+
+________________________________
+
+From: Tom Becker <tom.becker@nimbusstore.example>
+Sent: Monday, November 2, 2026 6:10 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Rollback is complete and throughput is recovering. Arjun, you can resume retries.
+
+One concern: billing-archive shows checksum mismatches on roughly 1,200 objects copied during the throttling window. We think these are truncated multipart uploads, but you should re-verify them on your side.
+
+Tom
+
+-----Original Message-----
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Monday, November 2, 2026 1:40 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Neha, please draft the customer update and send it to me for review. It needs to go out by 6 pm today. Keep it factual: vendor-side throttling, fix in progress, no data loss confirmed so far.
+
+Meera
+
+________________________________
+
+From: Imran Sheikh <imran.sheikh@corvid-analytics.example>
+Sent: Monday, November 2, 2026 7:30 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+All,
+
+From a security standpoint, checksum mismatches are a data-integrity question. Lisa, we need formal confirmation that no data was exposed, and the vendor incident report within 72 hours as required by clause 14.2 of our contract.
+
+Imran Sheikh
+Security Lead
+
+-----Original Message-----
+From: Tom Becker <tom.becker@nimbusstore.example>
+Sent: Monday, November 2, 2026 6:10 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Rollback is complete and throughput is recovering. Arjun, you can resume retries.
+
+One concern: billing-archive shows checksum mismatches on roughly 1,200 objects copied during the throttling window. We think these are truncated multipart uploads, but you should re-verify them on your side.
+
+Tom
+
+________________________________
+
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Tuesday, November 3, 2026 9:00 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Imran, understood. We will deliver the formal incident report by Friday, Nov 6, including a statement on data exposure.
+
+Lisa
+
+-----Original Message-----
+From: Imran Sheikh <imran.sheikh@corvid-analytics.example>
+Sent: Monday, November 2, 2026 7:30 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+All,
+
+From a security standpoint, checksum mismatches are a data-integrity question. Lisa, we need formal confirmation that no data was exposed, and the vendor incident report within 72 hours as required by clause 14.2 of our contract.
+
+Imran Sheikh
+Security Lead
+
+________________________________
+
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Tuesday, November 3, 2026 11:30 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+I wrote a script to re-verify checksums across billing-archive. Exactly 1,214 objects mismatch. I'm re-copying them tonight and will re-verify after.
+
+Arjun
+
+-----Original Message-----
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Tuesday, November 3, 2026 9:00 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Imran, understood. We will deliver the formal incident report by Friday, Nov 6, including a statement on data exposure.
+
+Lisa
+
+________________________________
+
+From: Neha Gupta <neha.gupta@corvid-analytics.example>
+Sent: Tuesday, November 3, 2026 11:45 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Quick note for the record: the customer update was sent to Halcyon Retail and Brightpath Health yesterday at 5:40 pm after Meera's review. Both acknowledged.
+
+Neha
+
+-----Original Message-----
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Tuesday, November 3, 2026 11:30 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+I wrote a script to re-verify checksums across billing-archive. Exactly 1,214 objects mismatch. I'm re-copying them tonight and will re-verify after.
+
+Arjun
+
+________________________________
+
+From: Kavya Reddy <kavya.reddy@corvid-analytics.example>
+Sent: Wednesday, November 4, 2026 10:10 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Hi Meera,
+
+Our SLA with NimbusStore guarantees 99.9% monthly availability. An outage of roughly 19 hours puts us in the 25% service-credit tier. The claim window closes on Nov 15, so I need the exact outage timeline to file it.
+
+Kavya Reddy
+Finance
+
+-----Original Message-----
+From: Neha Gupta <neha.gupta@corvid-analytics.example>
+Sent: Tuesday, November 3, 2026 11:45 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Quick note for the record: the customer update was sent to Halcyon Retail and Brightpath Health yesterday at 5:40 pm after Meera's review. Both acknowledged.
+
+Neha
+
+________________________________
+
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Wednesday, November 4, 2026 10:30 AM
+To: Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Arjun, please send Kavya the exact outage start and end timestamps by Nov 8.
+
+Meera
+
+-----Original Message-----
+From: Kavya Reddy <kavya.reddy@corvid-analytics.example>
+Sent: Wednesday, November 4, 2026 10:10 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Hi Meera,
+
+Our SLA with NimbusStore guarantees 99.9% monthly availability. An outage of roughly 19 hours puts us in the 25% service-credit tier. The claim window closes on Nov 15, so I need the exact outage timeline to file it.
+
+Kavya Reddy
+Finance
+
+________________________________
+
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Thursday, November 5, 2026 9:15 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Re-copy is done and all 1,214 objects now verify correctly.
+
+Kavya, timestamps sent to you separately: outage started 02:14 UTC on Oct 31 and replication recovered at 21:30 UTC on Oct 31, so 19 hours 16 minutes in total.
+
+Arjun
+
+-----Original Message-----
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Wednesday, November 4, 2026 10:30 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Arjun, please send Kavya the exact outage start and end timestamps by Nov 8.
+
+Meera
+
+________________________________
+
+From: Tom Becker <tom.becker@nimbusstore.example>
+Sent: Thursday, November 5, 2026 2:00 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+To prevent a repeat, I recommend enabling multi-region failover with us-east as the secondary region. Lisa can share pricing.
+
+Tom
+
+-----Original Message-----
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Thursday, November 5, 2026 9:15 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Re-copy is done and all 1,214 objects now verify correctly.
+
+Kavya, timestamps sent to you separately: outage started 02:14 UTC on Oct 31 and replication recovered at 21:30 UTC on Oct 31, so 19 hours 16 minutes in total.
+
+Arjun
+
+________________________________
+
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Thursday, November 5, 2026 4:20 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Multi-region failover adds about $3,800 per month. As a goodwill gesture we can offer a 20% discount for the first year. To lock that pricing we need your decision by Nov 20.
+
+Lisa
+
+-----Original Message-----
+From: Tom Becker <tom.becker@nimbusstore.example>
+Sent: Thursday, November 5, 2026 2:00 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+To prevent a repeat, I recommend enabling multi-region failover with us-east as the secondary region. Lisa can share pricing.
+
+Tom
+
+________________________________
+
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Friday, November 6, 2026 9:00 AM
+To: Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+We'll evaluate it. Arjun, please estimate the engineering effort for failover by Nov 12. Kavya, can you check whether this fits the budget?
+
+Meera
+
+-----Original Message-----
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Thursday, November 5, 2026 4:20 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Multi-region failover adds about $3,800 per month. As a goodwill gesture we can offer a 20% discount for the first year. To lock that pricing we need your decision by Nov 20.
+
+Lisa
+
+________________________________
+
+From: Kavya Reddy <kavya.reddy@corvid-analytics.example>
+Sent: Friday, November 6, 2026 11:30 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+We can absorb up to $3,500 per month without CFO approval. Even with the discount ($3,040 per month) we are under the limit for year one, but year two at full price is above it, so I'll prepare a memo for the CFO, Rohan Das, by Nov 14.
+
+Kavya
+
+-----Original Message-----
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Friday, November 6, 2026 9:00 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+We'll evaluate it. Arjun, please estimate the engineering effort for failover by Nov 12. Kavya, can you check whether this fits the budget?
+
+Meera
+
+________________________________
+
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Friday, November 6, 2026 5:45 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Incident report attached, as promised. Summary: root cause was a misconfigured rate-limit policy; there was no data exposure; the checksum mismatches were truncated multipart uploads caused by the throttling.
+
+Lisa
+
+-----Original Message-----
+From: Kavya Reddy <kavya.reddy@corvid-analytics.example>
+Sent: Friday, November 6, 2026 11:30 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+We can absorb up to $3,500 per month without CFO approval. Even with the discount ($3,040 per month) we are under the limit for year one, but year two at full price is above it, so I'll prepare a memo for the CFO, Rohan Das, by Nov 14.
+
+Kavya
+
+________________________________
+
+From: Imran Sheikh <imran.sheikh@corvid-analytics.example>
+Sent: Monday, November 9, 2026 10:00 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+I've reviewed the incident report and I'm satisfied on data exposure.
+
+Two follow-ups:
+1. Lisa, please confirm in writing by Nov 13 that NimbusStore will add alerting for policy pushes.
+2. As a precaution we must rotate the migration service account key. Arjun owns this, by Nov 10. For reference, the old key was nsk_live_8f2a9c71d4 and it must be revoked after rotation.
+
+Imran
+
+-----Original Message-----
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Friday, November 6, 2026 5:45 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Incident report attached, as promised. Summary: root cause was a misconfigured rate-limit policy; there was no data exposure; the checksum mismatches were truncated multipart uploads caused by the throttling.
+
+Lisa
+
+________________________________
+
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Tuesday, November 10, 2026 8:40 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Service account key rotated and the old key revoked on Nov 9.
+
+Failover estimate: about 6 engineer-days. I can start on Nov 23 if it's approved.
+
+Arjun
+
+-----Original Message-----
+From: Imran Sheikh <imran.sheikh@corvid-analytics.example>
+Sent: Monday, November 9, 2026 10:00 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+I've reviewed the incident report and I'm satisfied on data exposure.
+
+Two follow-ups:
+1. Lisa, please confirm in writing by Nov 13 that NimbusStore will add alerting for policy pushes.
+2. As a precaution we must rotate the migration service account key. Arjun owns this, by Nov 10. For reference, the old key was nsk_live_8f2a9c71d4 and it must be revoked after rotation.
+
+Imran
+
+________________________________
+
+From: Kavya Reddy <kavya.reddy@corvid-analytics.example>
+Sent: Thursday, November 12, 2026 3:30 PM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+SLA credit claim filed today, reference CR-2291. The CFO memo is also done and sent to Rohan.
+
+Kavya
+
+-----Original Message-----
+From: Arjun Patel <arjun.patel@corvid-analytics.example>
+Sent: Tuesday, November 10, 2026 8:40 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Service account key rotated and the old key revoked on Nov 9.
+
+Failover estimate: about 6 engineer-days. I can start on Nov 23 if it's approved.
+
+Arjun
+
+________________________________
+
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Friday, November 13, 2026 11:00 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Two updates:
+- Written confirmation attached: alerting on policy pushes will be added in Q1 2027.
+- Your SLA credit is approved: 25% of the October invoice, a $9,450 credit on your next bill.
+
+Lisa
+
+-----Original Message-----
+From: Kavya Reddy <kavya.reddy@corvid-analytics.example>
+Sent: Thursday, November 12, 2026 3:30 PM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+SLA credit claim filed today, reference CR-2291. The CFO memo is also done and sent to Rohan.
+
+Kavya
+
+________________________________
+
+From: Neha Gupta <neha.gupta@corvid-analytics.example>
+Sent: Saturday, November 14, 2026 10:20 AM
+To: Meera Nair <meera.nair@corvid-analytics.example>, Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Halcyon's compliance team is asking for a written RCA summary they can file. Who should prepare it? Imran, would that sit with you?
+
+Neha
+
+-----Original Message-----
+From: Lisa Wong <lisa.wong@nimbusstore.example>
+Sent: Friday, November 13, 2026 11:00 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Two updates:
+- Written confirmation attached: alerting on policy pushes will be added in Q1 2027.
+- Your SLA credit is approved: 25% of the October invoice, a $9,450 credit on your next bill.
+
+Lisa
+
+________________________________
+
+From: Meera Nair <meera.nair@corvid-analytics.example>
+Sent: Monday, November 16, 2026 9:00 AM
+To: Arjun Patel <arjun.patel@corvid-analytics.example>, Lisa Wong <lisa.wong@nimbusstore.example>, Tom Becker <tom.becker@nimbusstore.example>
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Thanks all. Decisions and next steps:
+
+- We will go ahead with multi-region failover, pending CFO approval, which Kavya expects by Nov 19.
+- Arjun starts the failover work on Nov 23.
+- Imran, please prepare the customer-facing RCA summary for Halcyon by Nov 18.
+- Neha, please schedule a call with Brightpath to close the loop.
+- I'll sign the failover order with Lisa once the CFO approves.
+- Postmortem meeting is on Nov 20. Arjun, please draft the postmortem doc before then.
+
+Meera
+
+-----Original Message-----
+From: Neha Gupta <neha.gupta@corvid-analytics.example>
+Sent: Saturday, November 14, 2026 10:20 AM
+Subject: RE: P1: NimbusStore replication failures — escalation
+
+Halcyon's compliance team is asking for a written RCA summary they can file. Who should prepare it? Imran, would that sit with you?
+
+Neha

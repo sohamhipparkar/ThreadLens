@@ -1,0 +1,80 @@
+From: Fatima Ali <fatima.ali@lumen-hr.example>
+To: Fatima Ali <fatima.ali@lumen-hr.example>, Karan Malhotra <karan.malhotra@lumen-hr.example>, Ishaan Verma <ishaan.verma@lumen-hr.example>, Jo Fernandes <jo.fernandes@lumen-hr.example>
+Date: Mon, 23 Nov 2026 10:00
+Subject: Interview loop — Senior Data Engineer
+
+Hi all,
+
+We have a strong candidate for the Senior Data Engineer role: Riya Kapoor. Her contact details are riya.kapoor.dev@example.com and +91 99887 66554. She is available Thursday, Nov 26, between 11am and 4pm.
+
+Proposed loop: Jo runs the coding round, Ishaan runs system design, Karan does the final culture-fit conversation. I'll send everyone her CV today.
+
+Fatima
+
+==========
+
+From: Karan Malhotra <karan.malhotra@lumen-hr.example>
+To: Fatima Ali <fatima.ali@lumen-hr.example>, Karan Malhotra <karan.malhotra@lumen-hr.example>, Ishaan Verma <ishaan.verma@lumen-hr.example>, Jo Fernandes <jo.fernandes@lumen-hr.example>
+Date: Mon, 23 Nov 2026 11:20
+Subject: Re: Interview loop — Senior Data Engineer
+
+Works for me. I can take the 3pm slot. Please put all feedback in the hiring tracker within 24 hours of your interview — no exceptions this time.
+
+Karan
+
+On Mon, 23 Nov 2026 10:00, Fatima Ali <fatima.ali@lumen-hr.example> wrote:
+> Hi all,
+>
+> We have a strong candidate for the Senior Data Engineer role: Riya Kapoor. Her contact details are riya.kapoor.dev@example.com and +91 99887 66554. She is available Thursday, Nov 26, between 11am and 4pm.
+>
+> Proposed loop: Jo runs the coding round, Ishaan runs system design, Karan does the final culture-fit conversation. I'll send everyone her CV today.
+>
+> Fatima
+
+==========
+
+From: Ishaan Verma <ishaan.verma@lumen-hr.example>
+To: Fatima Ali <fatima.ali@lumen-hr.example>, Karan Malhotra <karan.malhotra@lumen-hr.example>, Ishaan Verma <ishaan.verma@lumen-hr.example>, Jo Fernandes <jo.fernandes@lumen-hr.example>
+Date: Mon, 23 Nov 2026 12:05
+Subject: Re: Interview loop — Senior Data Engineer
+
+I can do system design at 1pm. Fatima, can you check whether she needs a visa sponsorship? That changes the offer timeline.
+
+Ishaan
+
+On Mon, 23 Nov 2026 11:20, Karan Malhotra <karan.malhotra@lumen-hr.example> wrote:
+> Works for me. I can take the 3pm slot. Please put all feedback in the hiring tracker within 24 hours of your interview — no exceptions this time.
+>
+> Karan
+
+==========
+
+From: Jo Fernandes <jo.fernandes@lumen-hr.example>
+To: Fatima Ali <fatima.ali@lumen-hr.example>, Karan Malhotra <karan.malhotra@lumen-hr.example>, Ishaan Verma <ishaan.verma@lumen-hr.example>, Jo Fernandes <jo.fernandes@lumen-hr.example>
+Date: Mon, 23 Nov 2026 14:40
+Subject: Re: Interview loop — Senior Data Engineer
+
+Coding round at 11am is fine. We'll also need a room with a whiteboard for the whole afternoon — someone should book one.
+
+Jo
+
+On Mon, 23 Nov 2026 12:05, Ishaan Verma <ishaan.verma@lumen-hr.example> wrote:
+> I can do system design at 1pm. Fatima, can you check whether she needs a visa sponsorship? That changes the offer timeline.
+>
+> Ishaan
+
+==========
+
+From: Fatima Ali <fatima.ali@lumen-hr.example>
+To: Fatima Ali <fatima.ali@lumen-hr.example>, Karan Malhotra <karan.malhotra@lumen-hr.example>, Ishaan Verma <ishaan.verma@lumen-hr.example>, Jo Fernandes <jo.fernandes@lumen-hr.example>
+Date: Mon, 23 Nov 2026 16:15
+Subject: Re: Interview loop — Senior Data Engineer
+
+CV sent to all of you. Riya confirmed she does not need visa sponsorship. I'll send calendar invites for 11am, 1pm and 3pm tonight.
+
+Fatima
+
+On Mon, 23 Nov 2026 14:40, Jo Fernandes <jo.fernandes@lumen-hr.example> wrote:
+> Coding round at 11am is fine. We'll also need a room with a whiteboard for the whole afternoon — someone should book one.
+>
+> Jo

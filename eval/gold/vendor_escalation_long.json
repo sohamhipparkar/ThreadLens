@@ -1,0 +1,146 @@
+{
+ "sample": "vendor_escalation_long.txt",
+ "action_items": [
+  {
+   "keywords": [
+    "cfo",
+    "approval"
+   ],
+   "owner": "Kavya",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "failover"
+   ],
+   "owner": "Arjun",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "rca",
+    "halcyon"
+   ],
+   "owner": "Imran",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "call",
+    "brightpath"
+   ],
+   "owner": "Neha",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "sign",
+    "order"
+   ],
+   "owner": "Meera",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "postmortem"
+   ],
+   "owner": "Arjun",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "customer",
+    "update"
+   ],
+   "owner": "Neha",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "pause",
+    "retries"
+   ],
+   "owner": "Arjun",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "re-copy",
+    "objects"
+   ],
+   "owner": "Arjun",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "timestamps"
+   ],
+   "owner": "Arjun",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "incident",
+    "report"
+   ],
+   "owner": "Lisa",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "sla",
+    "claim"
+   ],
+   "owner": "Kavya",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "estimate",
+    "effort"
+   ],
+   "owner": "Arjun",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "memo"
+   ],
+   "owner": "Kavya",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "rotate",
+    "key"
+   ],
+   "owner": "Arjun",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "alerting"
+   ],
+   "owner": "Lisa",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "logs"
+   ],
+   "owner": "Arjun",
+   "status": "done",
+   "optional": true
+  }
+ ]
+}

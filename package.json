@@ -1,0 +1,12 @@
+{
+  "name": "threadlens",
+  "version": "1.0.0",
+  "description": "Email Thread Summarizer & Action Tracker — Chrome extension powered by Gemini",
+  "private": true,
+  "scripts": {
+    "setup": "node setup.js",
+    "test": "node tests/test_core.mjs",
+    "eval": "node eval/run_eval.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

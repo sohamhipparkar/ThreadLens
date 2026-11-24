@@ -1,0 +1,103 @@
+{
+ "sample": "product_launch.txt",
+ "action_items": [
+  {
+   "keywords": [
+    "android",
+    "crash"
+   ],
+   "owner": "Rahul",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "payments",
+    "migration"
+   ],
+   "owner": "Vikram",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "blog"
+   ],
+   "owner": "David",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "invite"
+   ],
+   "owner": "Priya",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "faq"
+   ],
+   "owner": "Unassigned",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "onboarding",
+    "screens"
+   ],
+   "owner": "Ananya",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "screenshots"
+   ],
+   "owner": "Ananya",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "legal"
+   ],
+   "owner": "David",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "test",
+    "plan"
+   ],
+   "owner": "Sara",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "devops",
+    "credentials"
+   ],
+   "owner": "Priya",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "email",
+    "campaign"
+   ],
+   "owner": "David",
+   "status": "open",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "release",
+    "notes"
+   ],
+   "owner": "Unassigned",
+   "status": "open",
+   "optional": true
+  }
+ ]
+}

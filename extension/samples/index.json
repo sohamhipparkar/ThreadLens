@@ -1,0 +1,17 @@
+[
+  {
+    "file": "product_launch.txt",
+    "title": "Product launch plan",
+    "note": "10 emails \u00b7 reassignment \u00b7 done items"
+  },
+  {
+    "file": "vendor_escalation_long.txt",
+    "title": "Vendor outage escalation (long)",
+    "note": "26 emails \u00b7 triggers chunking"
+  },
+  {
+    "file": "hiring_loop.txt",
+    "title": "Hiring loop (with personal data)",
+    "note": "5 emails \u00b7 privacy demo"
+  }
+]

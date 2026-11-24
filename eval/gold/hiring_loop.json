@@ -1,0 +1,64 @@
+{
+ "sample": "hiring_loop.txt",
+ "action_items": [
+  {
+   "keywords": [
+    "coding"
+   ],
+   "owner": "Jo",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "system",
+    "design"
+   ],
+   "owner": "Ishaan",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "culture"
+   ],
+   "owner": "Karan",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "feedback"
+   ],
+   "owner": "Unassigned",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "room"
+   ],
+   "owner": "Unassigned",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "invites"
+   ],
+   "owner": "Fatima",
+   "status": "open"
+  },
+  {
+   "keywords": [
+    "cv"
+   ],
+   "owner": "Fatima",
+   "status": "done",
+   "optional": true
+  },
+  {
+   "keywords": [
+    "visa"
+   ],
+   "owner": "Fatima",
+   "status": "done",
+   "optional": true
+  }
+ ]
+}
